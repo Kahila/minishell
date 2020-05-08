@@ -6,14 +6,14 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/15 03:06:19 by akalombo          #+#    #+#             */
-/*   Updated: 2020/04/16 11:54:38 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/04/30 03:33:03 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-#include "libft.h"
+#include "libft/libft.h"
 #include "stdlib.h" //malloc, free, exit
 #include "unistd.h" //access, close, getcwd, chdir, fork, execve
 #include "fcntl.h" //open
@@ -25,5 +25,9 @@
 #include "signal.h" //signal, kill
 
 void                    ascii(char *project);
+void                    run(char *argv);
+int                     checkComand(char **envp);
+void                    process(pid_t child, char **command, char **envp, int status, char *ptr);
+int                    echo_(char **strs, char *ptr);
 
 #endif
