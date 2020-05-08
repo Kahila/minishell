@@ -56,8 +56,8 @@ void print_str(char *str)
 }
 
 /**
- * @param method will take in the comand
- * 
+ * @param comand
+ * @return -1 if fail and 0 if success
  * the method will be used to echo out the string that is passed after the echo comand
 */
 
@@ -69,6 +69,23 @@ int echo_(char **strs, char *ptr)
         int i = 0;
         print_str(ptr);
         ft_putchar('\n');
+        return (0);
+    }
+    return (-1);
+}
+
+/**
+ * @param path
+ * @return -1 if fail and 0 if success
+ * the method will change directories
+*/
+
+int ch_dir(char **strs)
+{
+    // printf("%s\n", strs[0]);
+    if (ft_strcmp("cd", strs[0]) == 0)
+    {
+        printf("this guy fina use cd\n");
         return (0);
     }
     return (-1);

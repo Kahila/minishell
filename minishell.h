@@ -28,6 +28,7 @@ void                    ascii(char *project);
 void                    run(char *argv);
 int                     checkComand(char **envp);
 void                    process(pid_t child, char **command, char **envp, int status, char *ptr);
-int                    echo_(char **strs, char *ptr);
+int                     echo_(char **strs, char *ptr);
+int                     ch_dir(char **strs);
 
 #endif
