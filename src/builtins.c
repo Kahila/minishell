@@ -77,7 +77,8 @@ int echo_(char **strs, char *ptr)
 /**
  * @param path
  * @return -1 if fail and 0 if success
- * the method will change directories
+ * the method will change directories to the provided path
+ * if the path is not set then the function will cd to the home dir
 */
 
 int ch_dir(char **strs)
@@ -85,7 +86,14 @@ int ch_dir(char **strs)
     // printf("%s\n", strs[0]);
     if (ft_strcmp("cd", strs[0]) == 0)
     {
-        printf("this guy fina use cd\n");
+        //printf("this guy fina use cd %s\n", strs[1]);
+        if (!strs[1])
+        {
+            chdir("/"); //if no path is passed then the program will cd to the root dir
+            return (0);
+        }
+        if (chdir(strs[1]) == -1)
+            return (-1); //will cause the error to be handled as an unknown file or dir by execve
         return (0);
     }
     return (-1);

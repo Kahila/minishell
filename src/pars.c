@@ -66,11 +66,13 @@ void process(pid_t child, char **command, char **envp, int status, char *ptr)
             kill(child, SIGKILL); //killing the process on exit
             exit(0);
         }
-
         if (execve(command[0], command, envp) && echo_(command, ptr) == -1 && ft_strlen(ptr) != 1)
         {
-            perror("execve");
-            exit(EXIT_FAILURE);
+            if (ch_dir(command) == -1)
+            {
+                perror("execve");
+                exit(EXIT_FAILURE);
+            }
         }
     }
     if (child > 0) // Successful forks return positive process id's the parent
