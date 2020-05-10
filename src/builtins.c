@@ -19,7 +19,7 @@
  * this file contains all the functions that concern builtins such as 'echo', 'cd' and exit
 */
 
-char *g_path;
+char g_path[100];
 // int fg_found = 0;
 
 /**
@@ -114,12 +114,14 @@ int ch_dir(char **strs)
 {
     if (ft_strcmp("cd", strs[0]) == 0)
     {
+        if (!strs[1] || ft_strcmp("-", strs[1]) != 0)
+            getcwd(g_path, 100);
         if (!strs[1] || ft_strcmp("~", strs[1]) == 0)
         {
             count_fall_backs();
             return (0);
         }
-        if (ft_strcmp("-", strs[1]) == 0 && g_path)
+        if (ft_strcmp("-", strs[1]) == 0)
         {
             chdir(g_path);
             return (0);
