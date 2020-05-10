@@ -35,15 +35,12 @@ int checkComand(char **envp)
         ft_putstr("$ ");
         if (getline(&lineptr, &i, stdin) == -1)
             break;
-        // if (lineptr)
+        if (ft_strlen(lineptr) != 1)
         {
             lineptr = ft_strtrim(lineptr);       /// must be freed
             command = ft_strsplit(lineptr, ' '); //must be freed
         }
-        // if (ch_dir(command)== -1){
-
-        // }
-        child = fork();  
+        child = fork();
         process(child, command, envp, status, lineptr);
     }
     ft_putchar('\n');
@@ -62,12 +59,15 @@ int checkComand(char **envp)
 
 void process(pid_t child, char **command, char **envp, int status, char *ptr)
 {
-    if (strcmp(command[0], "exit") == 0) //if the command passed is equal to exit than the program will exit
-        exit(0);
-    else if (child == 0) // No error checking; too close to being not a "snippet"
+    if (child == 0) // No error checking; too close to being not a "snippet"
     {
-        // printf("exec : |%s|\n", command[0]);
-        if (execve(command[0], command, envp) && echo_(command, ptr) == -1)
+        if (ft_strcmp("exit", ptr) == 0)
+        {
+            kill(child, SIGKILL); //killing the process on exit
+            exit(0);
+        }
+
+        if (execve(command[0], command, envp) && echo_(command, ptr) == -1 && ft_strlen(ptr) != 1)
         {
             perror("execve");
             exit(EXIT_FAILURE);
