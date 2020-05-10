@@ -16,8 +16,11 @@
 /**
  * @author akalombo
  * 
- * this file contains all the functions that concern builtins such as 'echo', 'cd'
+ * this file contains all the functions that concern builtins such as 'echo', 'cd' and exit
 */
+
+char *g_path;
+// int fg_found = 0;
 
 /**
  * @param string to be manipulated
@@ -75,24 +78,53 @@ int echo_(char **strs, char *ptr)
 }
 
 /**
+ * @fn ch_dir
  * @param path
  * @return -1 if fail and 0 if success
  * the method will change directories to the provided path
  * if the path is not set then the function will cd to the home dir
 */
 
+//helper method to the cd_dir .. will be used to handle the "cd ~" flag
+void count_fall_backs()
+{
+    int i;
+    int found;
+    char path[100];
+    char new[1000];
+
+    getcwd(path, 100); //getting the path of the current dir for modification
+    i = found = 0;
+    while (path[i])
+    {
+        new[i] = path[i];
+        i++;
+        if (path[i] == '/')
+            found++;
+        if (found == 2)
+            break;
+    }
+    new[i] = '\0';
+    chdir(new);
+}
+
+//method that will handle the "cd -" flag for moving to previous path
+
 int ch_dir(char **strs)
 {
-    // printf("%s\n", strs[0]);
     if (ft_strcmp("cd", strs[0]) == 0)
     {
-        //printf("this guy fina use cd %s\n", strs[1]);
-        if (!strs[1])
+        if (!strs[1] || ft_strcmp("~", strs[1]) == 0)
         {
-            chdir("/"); //if no path is passed then the program will cd to the root dir
+            count_fall_backs();
             return (0);
         }
-        if (chdir(strs[1]) == -1)
+        if (ft_strcmp("-", strs[1]) == 0 && g_path)
+        {
+            chdir(g_path);
+            return (0);
+        }
+        if (chdir(strs[1]) == -1 && strs[1])
             return (-1); //will cause the error to be handled as an unknown file or dir by execve
         return (0);
     }
