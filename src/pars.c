@@ -6,7 +6,7 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 14:25:26 by akalombo          #+#    #+#             */
-/*   Updated: 2020/04/30 03:07:53 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/05/12 01:48:11 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,37 +16,52 @@
  * @author adonis kahila
  * @version 1.0
  * the following file works with process and execve
-*/
+ */
+
+int built_ins(char *str)
+{
+    if (ft_strcmp("cd", str) != 0 || ft_strcmp("echo", str) != 0)
+        return (-1);
+    return (0);
+}
 
 /**
  * @param  double pointer of type char
  * @return  the function returns antager
-*/
-int checkComand(char **envp)
+ */
+void checkComand(char **envp)
 {
     pid_t child;
     char **command;
-    char *lineptr = NULL;
-    size_t i;
-    int status = 0;
+    char *lineptr;
+    char *c;
+    size_t status;
 
+    lineptr = NULL;
     while (1)
     {
         ft_putstr("$ ");
-        if (getline(&lineptr, &i, stdin) == -1)
+        if (getline(&lineptr, &status, stdin) == -1)
             break;
         if (ft_strlen(lineptr) != 1)
         {
-            lineptr = ft_strtrim(lineptr);       /// must be freed
-            command = ft_strsplit(lineptr, ' '); //must be freed
+            c = lineptr;
+            lineptr = ft_strtrim(lineptr);
+            free(c);
+            command = ft_strsplit(lineptr, ' '); 
         }
         child = fork();
         process(child, command, envp, status, lineptr);
+        if ((status = 0) && ft_strlen(lineptr) > 1 && built_ins(command[0]) != -1)
+        {
+            while (command[status])
+                free(command[status++]);
+            free(command);
+        }
     }
     ft_putchar('\n');
     free(lineptr);
     exit(status);
-    return (0);
 }
 
 /**
@@ -55,7 +70,7 @@ int checkComand(char **envp)
  * 
  * @param child value of time pid_t
  * @return the method returns void
-*/
+ */
 
 void process(pid_t child, char **command, char **envp, int status, char *ptr)
 {
@@ -77,4 +92,18 @@ void process(pid_t child, char **command, char **envp, int status, char *ptr)
     }
     if (child > 0) // Successful forks return positive process id's the parent
         wait(&status);
+}
+
+void           ft_free(char ***command, char *lineptr)
+{
+    int status;
+
+    status = 0;
+    if (ft_strlen(lineptr) > 1)
+    {
+        while (*command[status])
+            free(*command[status++]);
+        free(*command);
+    }
+
 }

@@ -6,7 +6,7 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/15 03:06:19 by akalombo          #+#    #+#             */
-/*   Updated: 2020/04/30 03:33:03 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/05/12 01:25:43 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@
 
 void                    ascii(char *project);
 void                    run(char *argv);
-int                     checkComand(char **envp);
+void                     checkComand(char **envp);
 void                    process(pid_t child, char **command, char **envp, int status, char *ptr);
 int                     echo_(char **strs, char *ptr);
 int                     ch_dir(char **strs);
+void                    ft_free(char ***command, char *lineptr);
 
 #endif
