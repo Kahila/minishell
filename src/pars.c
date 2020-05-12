@@ -6,7 +6,7 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 14:25:26 by akalombo          #+#    #+#             */
-/*   Updated: 2020/05/12 01:48:11 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/05/12 02:06:09 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,10 @@ void checkComand(char **envp)
 {
     pid_t child;
     char **command;
-    char *lineptr;
+    char *lineptr = NULL;
     char *c;
     size_t status;
 
-    lineptr = NULL;
     while (1)
     {
         ft_putstr("$ ");
@@ -52,7 +51,8 @@ void checkComand(char **envp)
         }
         child = fork();
         process(child, command, envp, status, lineptr);
-        if ((status = 0) && ft_strlen(lineptr) > 1 && built_ins(command[0]) != -1)
+        status = 0;
+        if (ft_strlen(lineptr) > 1 && built_ins(command[0]) == -1)
         {
             while (command[status])
                 free(command[status++]);
