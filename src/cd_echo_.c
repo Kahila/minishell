@@ -6,7 +6,7 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 23:49:46 by akalombo          #+#    #+#             */
-/*   Updated: 2020/05/11 23:52:48 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/05/13 19:29:53 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * this file contains all the functions that concern builtins such as 'echo', 'cd' and exit
 */
 
-char g_path[100];
+//char g_path[100];
 // int fg_found = 0;
 
 /**
