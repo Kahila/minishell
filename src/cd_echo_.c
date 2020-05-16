@@ -6,7 +6,7 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 23:49:46 by akalombo          #+#    #+#             */
-/*   Updated: 2020/05/13 19:29:53 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/05/16 07:03:28 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,36 @@ void print_str(char *str)
     }
 }
 
+//method that will print the env variable through echo
+int  echo_env(char *str)
+{
+    extern char **environ;
+    char **tmp;
+    char **split_;
+    char *joined;
+    int i;
+
+    i = 0;
+    split_ = ft_strsplit(str, ' ');
+    if (split_[1] && split_[1][0] == '$')
+    {
+    while (environ[i])
+    {
+        tmp = ft_strsplit(environ[i], '=');
+        joined = ft_strjoin("$", tmp[0]);
+        if (ft_strcmp(joined, split_[1]) == 0)
+            ft_putendl(tmp[1]);
+        free_(tmp);
+        free(joined);
+        i++;
+    }
+    free_(split_);
+    return (0);
+    }
+    free_(split_);
+    return (-1);
+}
+
 /**
  * @param comand
  * @return -1 if fail and 0 if success
@@ -66,12 +96,15 @@ void print_str(char *str)
 
 int echo_(char **strs, char *ptr)
 {
-    //char **split = ft_strsplit(str, ' ');
     if (ft_strcmp(strs[0], "echo") == 0)
     {
+        if (echo_env(ptr) == -1)
+        {
         int i = 0;
         print_str(ptr);
         ft_putchar('\n');
+        return (0);
+        }
         return (0);
     }
     return (-1);
@@ -93,7 +126,7 @@ void count_fall_backs()
     char path[100];
     char new[1000];
 
-    getcwd(path, 100); //getting the path of the current dir for modification
+    getcwd(path, 100);
     i = found = 0;
     while (path[i])
     {
@@ -109,7 +142,6 @@ void count_fall_backs()
 }
 
 //method that will handle the "cd -" flag for moving to previous path
-
 int ch_dir(char **strs)
 {
     if (ft_strcmp("cd", strs[0]) == 0)
