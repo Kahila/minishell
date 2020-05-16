@@ -6,7 +6,7 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 14:25:26 by akalombo          #+#    #+#             */
-/*   Updated: 2020/05/15 19:01:26 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/05/16 05:51:45 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void process(pid_t child, char **command, char **envp, int status, char *ptr)
         }
         if (execve(command[0], command, envp) && echo_(command, ptr) == -1 && ft_strlen(ptr) != 1)
         {
-            if (ch_dir(command) == -1 && call_env(ptr) == -1 && env_(command[0]) == -1)
+            if (ch_dir(command) == -1 && call_env(ptr) == -1 && env_(command[0]) == -1 && unset(ptr) == -1)
             {
                 ft_putstr("minishell: command not found: ");
                 ft_putstr(ptr);

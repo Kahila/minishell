@@ -6,7 +6,7 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/15 03:06:19 by akalombo          #+#    #+#             */
-/*   Updated: 2020/05/15 18:07:39 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/05/15 20:00:22 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@
 char                    g_path[100];
 char                    **g_env;
 char                    **g_set;
- int      compar(char *str, char *str1);
+
+int                     unset(char *str);
+int                     ft_unsetenv(const char *name);
+int                     compar(char *str, char *str1);
 char                    **ft_realloc(size_t size);
 int                     ft_setenv(const char *name, const char *value, int overwrite);
 int                     call_env(char *str);

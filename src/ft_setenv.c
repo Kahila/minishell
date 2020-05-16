@@ -6,7 +6,7 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 23:56:42 by akalombo          #+#    #+#             */
-/*   Updated: 2020/05/15 19:02:33 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/05/16 05:52:15 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int  init_env()
     {
         if (compar(tmp[i],"XPC_SERVICE_NAME") == 0)
         {
-            environ[i] = tmp[i];
+           environ[i] = tmp[i];
             i++;
         }
         environ[i] = ft_strdup(tmp[i]);
@@ -78,7 +78,6 @@ int free_(char **strs)
     while (strs[i])
         free(strs[i++]);
     free(strs);
-
     return (0);
 }
 
