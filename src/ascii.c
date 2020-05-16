@@ -6,13 +6,11 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/15 03:02:07 by akalombo          #+#    #+#             */
-/*   Updated: 2020/04/15 05:00:06 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/05/16 07:24:19 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdio.h"
-#include <curses.h>
-#include "minishell.h"
+#include "../minishell.h"
 
 void ascii(char *project){
     char *asc = ("\t\t\t\t\t                                  ___====-_  _-====___\n\
