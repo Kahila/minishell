@@ -10,27 +10,49 @@
 #*                                                                            *#
 #* ************************************************************************** *#
 
-NAME= minishell.a
+NAME= minishell
 
-CC= gcc
+IDIR = ./inc/
+INCS = libft.h	\
+	   minishell.h
+INCC = $(addprefix $(IDIR), $(INCS))
 
-SRC= minishell.c ascii.c src/pars.c
+LDIR = ./inc/libft
+LIBS = -lft
 
-OBJ= minishell.0 ascii.o pars.once
+SDIR = ./src/
+SRCS = ascii.c			\
+	   cd_echo.c		\
+	   ft_path_man.c	\
+	   ft_setenv.c		\
+	   ft_unsetenv.c	\
+	   ft_minishell.c	\
+	   ft_pars.c		
 
-FLAGS= -Wextra -Werror -Wall
+SRCC = $(addprefix $(SDIR),$(SRCS))
+
+ODIR = ./objs/
+OBJS = $(SRCS:.c=.o)
+OBCC = $(addprefix $(ODIR),$(OBJS))
+
+FLAG = -g -Wall -Werror -Wextra
+
+$(NAME): $(OBCC)
+	make -C ./inc/libft/
+	gcc $(FLAG) $(OBCC) -L$(LDIR) $(LIBS) -o $(NAME)
+
+$(ODIR)%.o: $(SDIR)%.c
+	@mkdir -p $(ODIR)
+	gcc $^ $(FLAG) -c -o $@ -I$(IDIR)
 
 all: $(NAME)
 
-$(NAME):
-	$(CC) -c $(FLAGS) $(SRC)
-	ar rc $(NAME) &(OBJ)
-	ranlib $(NAME)
-	
 clean:
-	rm -f $(OBJ)
+	make -C inc/libft clean
+	rm -f $(OBJS)
 
-fclean: clean
+fclean:	clean
+	make -C inc/libft fclean
 	rm -f $(NAME)
 
-re: fclean all
+re : fclean all

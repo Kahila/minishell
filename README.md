@@ -46,4 +46,25 @@
 ### Source files
 
 ```
-//here run( $ tree )in your main minishell dir and copy and paste
+
+src/
+├── ascii.c
+├── cd_echo_.c
+├── ft_path_man.c
+├── ft_setenv.c
+├── ft_unsetenv.c
+├── minishell.c
+└── pars.c
+
+Makefile   README.md  author     inc/       src/
+
+##How to compile
+
+-run
+
+$ make
+
+$ ./minishell
+
+$ etc
+
