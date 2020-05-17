@@ -14,15 +14,15 @@
 # define MINISHELL_H
 
 #include "libft/libft.h"
-#include "stdlib.h" //malloc, free, exit
-#include "unistd.h" //access, close, getcwd, chdir, fork, execve
-#include "fcntl.h" //open
+#include "stdlib.h"
+#include "unistd.h"
+#include "fcntl.h"
 #include "sys/types.h"
 #include "sys/uio.h"
-#include "dirent.h" //opendir, readdir, closedir
-#include "sys/stat.h" //stat, lstat, fstat
-#include "sys/wait.h" //wait, waitpid, wait3, wait4
-#include "signal.h" //signal, kill
+#include "dirent.h"
+#include "sys/stat.h"
+#include "sys/wait.h"
+#include "signal.h"
 #include "stdio.h"
 
 char                    g_path[100];
