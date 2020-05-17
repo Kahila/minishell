@@ -12,7 +12,6 @@
 
 #include "../inc/minishell.h"
 
-//method that will init the environ
 int  init_env()
 {
     int i = 0;
@@ -33,7 +32,6 @@ int  init_env()
     return (i);
 }
 
-//method for comaring the name
 int      compar(char *str, char *str1)
 {
     int i = 0;
@@ -53,7 +51,6 @@ int      compar(char *str, char *str1)
         return (-1);
 }
 
-//method that is going to return the index of the similar name
 int replace_(char *str)
 {
     int i = 0;
@@ -68,7 +65,6 @@ int replace_(char *str)
     return (-1);
 }
 
-//method that is going to init the extern array for modification
 int free_(char **strs)
 {
     int i;
@@ -80,8 +76,6 @@ int free_(char **strs)
     return (0);
 }
 
-//method that is going to be used to split the string that will call ft_setenv
-//and get the value of overwrite
 int  call_env(char *str)
 {
     char **args;
@@ -95,14 +89,15 @@ int  call_env(char *str)
         ft_setenv(new[0],new[1], 0);
         free_(args);
         free_(new);
-        //g_path_ = get_path(environ);
         return (0);
     }
     free_(args);
     return (-1);
 }
 
-//method that is used to get the amount of the env content
+/*
+method that is used to get the amount of the env content
+*/
 size_t count_()
 {
     extern char **environ;
@@ -131,10 +126,11 @@ void ft_real(char **add, int index)
         environ[index] = ft_strdup(*add);
     }
     environ[i+1] = NULL;
- //g_path_ = get_path(environ);
 }
 
-//method that will copy the content to the env 
+/*
+method that will copy the content to the env
+*/
 int ft_setenv(const char *name, const char *value, int overwrite)
 {
     char *tmp = ft_strjoin(name, "=");
@@ -147,14 +143,6 @@ int ft_setenv(const char *name, const char *value, int overwrite)
         ft_real(&tmp, replace_((char *)name));
     free(new);
     free(tmp);
-    //g_path_ = get_path(environ);
     int i = 0;
-    //while (environ[i])
-    //{
-   //    printf("------%s\n", g_path_);
-       //run_execve()
-      //  i++;
-    //}
-  //  printf("__%s\n", g_path_);
     return (0);
 }
