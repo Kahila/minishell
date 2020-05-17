@@ -41,7 +41,7 @@ void                    set_env(char *var);
 int                     free_(char **);
 int                     init_env();
 int                     ft_env(char *cmd, char **);
-void                    ascii(char *project);
+void                    ascii();
 void                    run(char *argv);
 void                    checkComand(char **envp);
 void                    process(pid_t child, char **command, char **envp, int status, char *ptr);

@@ -12,7 +12,7 @@
 
 #include "../inc/minishell.h"
 
-void ascii(char *project){
+void ascii(){
     char *asc = ("\t\t\t\t\t                                  ___====-_  _-====___\n\
     \t\t\t\t\t                            _--^^^#####//      \\\\#####^^^--_\n\
     \t\t\t\t\t                         _-^##########// (    ) \\\\##########^-_\n\
