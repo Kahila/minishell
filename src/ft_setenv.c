@@ -6,7 +6,7 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 23:56:42 by akalombo          #+#    #+#             */
-/*   Updated: 2020/05/16 07:54:10 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/05/17 10:22:58 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int  call_env(char *str)
         ft_setenv(new[0],new[1], 0);
         free_(args);
         free_(new);
+        //g_path_ = get_path(environ);
         return (0);
     }
     free_(args);
@@ -130,6 +131,7 @@ void ft_real(char **add, int index)
         environ[index] = ft_strdup(*add);
     }
     environ[i+1] = NULL;
+ //g_path_ = get_path(environ);
 }
 
 //method that will copy the content to the env 
@@ -137,6 +139,7 @@ int ft_setenv(const char *name, const char *value, int overwrite)
 {
     char *tmp = ft_strjoin(name, "=");
     char *new;
+    extern char **environ;
     new = ft_strjoin(tmp, value);
     if (value)
         ft_real(&new, replace_((char *)name));
@@ -144,5 +147,14 @@ int ft_setenv(const char *name, const char *value, int overwrite)
         ft_real(&tmp, replace_((char *)name));
     free(new);
     free(tmp);
+    //g_path_ = get_path(environ);
+    int i = 0;
+    //while (environ[i])
+    //{
+   //    printf("------%s\n", g_path_);
+       //run_execve()
+      //  i++;
+    //}
+  //  printf("__%s\n", g_path_);
     return (0);
 }
