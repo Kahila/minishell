@@ -96,8 +96,8 @@ int  call_env(char *str)
 }
 
 /*
-method that is used to get the amount of the env content
-*/
+ *method that is used to get the amount of the env content
+ */
 size_t count_()
 {
     extern char **environ;
@@ -129,8 +129,8 @@ void ft_real(char **add, int index)
 }
 
 /*
-method that will copy the content to the env
-*/
+ *method that will copy the content to the env
+ */
 int ft_setenv(const char *name, const char *value, int overwrite)
 {
     char *tmp = ft_strjoin(name, "=");
