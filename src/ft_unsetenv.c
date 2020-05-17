@@ -61,7 +61,7 @@ void remove_(int index)
 int ft_unsetenv(const char *name)
 {
     extern char **environ;
-    char **tmp;
+    // char **tmp;
     int i;
 
     i = 0;

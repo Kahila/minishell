@@ -21,13 +21,7 @@ LDIR = ./inc/libft
 LIBS = -lft
 
 SDIR = ./src/
-SRCS = ascii.c			\
-	   cd_echo.c		\
-	   ft_path_man.c	\
-	   ft_setenv.c		\
-	   ft_unsetenv.c	\
-	   ft_minishell.c	\
-	   ft_pars.c		
+SRCS = ascii.c cd_echo_.c ft_path_man.c ft_setenv.c ft_unsetenv.c minishell.c pars.c
 
 SRCC = $(addprefix $(SDIR),$(SRCS))
 

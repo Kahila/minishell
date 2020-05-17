@@ -95,7 +95,7 @@ int echo_(char **strs, char *ptr)
     {
         if (echo_env(ptr) == -1)
         {
-        int i = 0;
+        // int i = 0;
         print_str(ptr);
         ft_putchar('\n');
         return (0);

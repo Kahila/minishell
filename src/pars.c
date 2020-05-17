@@ -116,6 +116,10 @@ void checkComand(char **envp)
     char *c;
     size_t status;
 
+    c = NULL;
+    command = NULL;
+    child = 0;
+
     lineptr = NULL;
     status = crete_process(child, command, lineptr, c, envp);
     ft_putchar('\n');

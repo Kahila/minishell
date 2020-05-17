@@ -35,7 +35,7 @@ int  init_env()
 int      compar(char *str, char *str1)
 {
     int i = 0;
-    int j = 0;
+    unsigned int j = 0;
 
     while(str[i] != '=')
     {
@@ -135,6 +135,7 @@ int ft_setenv(const char *name, const char *value, int overwrite)
 {
     char *tmp = ft_strjoin(name, "=");
     char *new;
+    (void)overwrite;
     extern char **environ;
     new = ft_strjoin(tmp, value);
     if (value)
@@ -143,6 +144,5 @@ int ft_setenv(const char *name, const char *value, int overwrite)
         ft_real(&tmp, replace_((char *)name));
     free(new);
     free(tmp);
-    int i = 0;
     return (0);
 }

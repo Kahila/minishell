@@ -45,7 +45,7 @@ char *get_path(char **environ)
 
 int final_path(char **command, char **envp)
 {
-    char *path;
+    // char *path;
     char *s = NULL;
 
     g_path_ = get_path(envp);
