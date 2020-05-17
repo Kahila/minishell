@@ -12,7 +12,6 @@
 
 #include "../inc/minishell.h"
 
-//method that will be used to get the path env and its values for further manipulation
 char *get_path(char **environ)
 {
     char *found;
@@ -44,14 +43,11 @@ char *get_path(char **environ)
     return (NULL);
 }
 
-//method reponsible for running the binaries in the provided path
 int final_path(char **command, char **envp)
 {
     char *path;
     char *s = NULL;
 
-    //if (g_path_)
-      //  free(g_path_);
     g_path_ = get_path(envp);
     if (g_path_)
     {
