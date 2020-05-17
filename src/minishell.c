@@ -17,8 +17,6 @@ int main(int argc, char **argv, char *envp[]){
     
     init_env();
     if (argc > 0 && argv[0] != NULL){
-    //  ascii("MINISHELL");
-      //run_execve(argv);
       checkComand(envp);
     }
     free(g_set);
