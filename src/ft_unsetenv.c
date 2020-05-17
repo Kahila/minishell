@@ -24,7 +24,9 @@ int _count()
     return (i);
 }
 
-//method that will be used for freeing the memory of the string unseted
+/*
+method that will be used for freeing the memory of the string unseted
+*/
 void remove_(int index)
 {
     char **tmp;
@@ -36,7 +38,6 @@ void remove_(int index)
     i = 0;
     j = 0;
     printf("----%s\n", environ[_count()]);
-    //free(environ[_count()]);
     free(environ[_count() - 1]);
     while (tmp[j])
     {
@@ -44,7 +45,6 @@ void remove_(int index)
         {
             j++;
             index = -1;
-            //free(environ[i])
             continue;
         }
         free(environ[i]);
@@ -53,10 +53,7 @@ void remove_(int index)
         j++;
     }
 
-    //printf("--- %s\n", environ[j - 1]);
-    //free(environ[j - 1]);
     environ[i] = NULL;
-    //free_(tmp);
     return;
 }
 
@@ -70,11 +67,8 @@ int ft_unsetenv(const char *name)
     i = 0;
     while (environ[i])
     {
-        ///printf("== %i\n",compar(environ[i], (char *)name) );
-        //free(environ[i]);
         if (compar(environ[i], (char *)name) == 0)
         {
-            //environ[i] = "________";
             remove_(i);
             break;
         }
