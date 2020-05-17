@@ -11,14 +11,13 @@
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
-#include "stdio.h"
 
-int main(int argc, char **argv, char *envp[]){
-    
-    init_env();
-    if (argc > 0 && argv[0] != NULL){
-      checkComand(envp);
-    }
-    free(g_set);
-    return (0);
+int	main(int argc, char **argv, char *envp[])
+{
+	init_env();
+	if (argc > 0 && argv[0] != NULL){
+		checkComand(envp);
+	}
+	free(g_set);
+	return (0);
 }
