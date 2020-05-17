@@ -18,9 +18,6 @@
  * this file contains all the functions that concern builtins such as 'echo', 'cd' and exit
 */
 
-//char g_path[100];
-// int fg_found = 0;
-
 /**
  * @param string to be manipulated
  * @return void
@@ -57,7 +54,6 @@ void print_str(char *str)
     }
 }
 
-//method that will print the env variable through echo
 int  echo_env(char *str)
 {
     extern char **environ;
@@ -117,7 +113,6 @@ int echo_(char **strs, char *ptr)
  * if the path is not set then the function will cd to the home dir
 */
 
-//helper method to the cd_dir .. will be used to handle the "cd ~" flag
 void count_fall_backs()
 {
     int i;
@@ -140,7 +135,6 @@ void count_fall_backs()
     chdir(new);
 }
 
-//method that will handle the "cd -" flag for moving to previous path
 int ch_dir(char **strs)
 {
     if (ft_strcmp("cd", strs[0]) == 0)
@@ -158,7 +152,7 @@ int ch_dir(char **strs)
             return (0);
         }
         if (chdir(strs[1]) == -1 && strs[1])
-            return (-1); //will cause the error to be handled as an unknown file or dir by execve
+            return (-1);
         return (0);
     }
     return (-1);
