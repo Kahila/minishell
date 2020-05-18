@@ -12,18 +12,6 @@
 
 #include "../inc/minishell.h"
 
-/**
- * @author akalombo
- * 
- * this file contains all the functions that concern builtins such as 'echo', 'cd' and exit
-*/
-
-/**
- * @param string to be manipulated
- * @return void
- * the method is going to manipulate the string while displaying it
-*/
-
 void print_str(char *str)
 {
     int i;
@@ -83,12 +71,6 @@ int  echo_env(char *str)
     return (-1);
 }
 
-/**
- * @param comand
- * @return -1 if fail and 0 if success
- * the method will be used to echo out the string that is passed after the echo comand
-*/
-
 int echo_(char **strs, char *ptr)
 {
     if (ft_strcmp(strs[0], "echo") == 0)
@@ -104,14 +86,6 @@ int echo_(char **strs, char *ptr)
     }
     return (-1);
 }
-
-/**
- * @fn ch_dir
- * @param path
- * @return -1 if fail and 0 if success
- * the method will change directories to the provided path
- * if the path is not set then the function will cd to the home dir
-*/
 
 void count_fall_backs()
 {

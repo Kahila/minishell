@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
+#include "stdio.h"
 
 int	built_ins(char *str)
 {
@@ -37,7 +38,7 @@ int	check_(char *str)
 
 int	env_(char *str)
 {
-	int	i;
+	int		i;
 	extern char	**environ;
 
 	if (ft_strcmp(str, "env") == 0)
@@ -55,19 +56,19 @@ int	env_(char *str)
 
 int	len_check(char *str)
 {
-	size_t i = 0;
+	size_t	i = 0;
 
 	while (str[i] == ' ' || str[i] == '\t')
 		i++;
 	i++;
-	if(i == ft_strlen(str))
+	if (i == ft_strlen(str))
 		return (0);
 	return (-1);
 }
 
 size_t	crete_process(pid_t child, char **command, char *lineptr, char *c, char **envp)
 {
-	size_t status;
+	size_t	status;
 
 	status = 0;
 	while(1)
@@ -82,7 +83,7 @@ size_t	crete_process(pid_t child, char **command, char *lineptr, char *c, char *
 				c = lineptr;
 				lineptr = ft_strtrim(lineptr);
 				free(c);
-				command = ft_strsplit(lineptr, ' '); 
+				command = ft_strsplit(lineptr, ' ');
 			}
 			child = fork();
 			process(child, command, envp, status, lineptr);
@@ -100,7 +101,7 @@ size_t	crete_process(pid_t child, char **command, char *lineptr, char *c, char *
 
 void	checkComand(char **envp)
 {
-	pid_t child;
+	pid_t	child;
 	char	**command;
 	char	*lineptr;
 	char	*c;
@@ -109,7 +110,6 @@ void	checkComand(char **envp)
 	c = NULL;
 	command = NULL;
 	child = 0;
-
 	lineptr = NULL;
 	status = crete_process(child, command, lineptr, c, envp);
 	ft_putchar('\n');
@@ -147,9 +147,9 @@ void	process(pid_t child, char **command, char **envp, int status, char *ptr)
 		wait(&status);
 }
 
-void           ft_free(char ***command, char *lineptr)
+void	ft_free(char ***command, char *lineptr)
 {
-	int status;
+	int	status;
 
 	status = 0;
 	if (ft_strlen(lineptr) > 1)
