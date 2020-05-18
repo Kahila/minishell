@@ -6,7 +6,7 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 23:49:46 by akalombo          #+#    #+#             */
-/*   Updated: 2020/05/18 20:45:01 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/05/18 23:16:22 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ int echo_(char **strs, char *ptr)
     {
         if (echo_env(ptr) == -1)
         {
-        // int i = 0;
         print_str(ptr);
         ft_putchar('\n');
         return (0);

@@ -6,7 +6,7 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/15 19:10:00 by akalombo          #+#    #+#             */
-/*   Updated: 2020/05/18 23:05:54 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/05/18 23:57:16 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void remove_(int index)
             j++;
             index = -1;
             continue;
-       }
+        }
         free(environ[i]);
         environ[i] = ft_strdup(tmp[j]);
         i++;
@@ -79,9 +79,11 @@ int unset(char *str)
     {
         if (tmp[1])
             ft_unsetenv(tmp[1]);
-        free_(tmp);
+        if (tmp)
+            free_(tmp);
         return (0);
     }
-    free_(tmp);
-    return (-1);
+    if (tmp)
+        free_(tmp);
+        return (-1);
 }

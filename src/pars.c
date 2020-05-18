@@ -6,7 +6,7 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 14:25:26 by akalombo          #+#    #+#             */
-/*   Updated: 2020/05/18 22:38:18 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/05/19 00:09:02 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ char *rm_(char *str)
     char str1[10000];
     int i;
     int found;
-    //char *new;
     int j = 0;
 
     i = 0;
@@ -105,7 +104,8 @@ void	checkComand(char **envp)
     lineptr = NULL;
     status = crete_process(child, command, lineptr, c, envp);
     ft_putchar('\n');
-    free(lineptr);
+    if (lineptr)
+        free(lineptr);
     exit(status);
 }
 
@@ -118,8 +118,6 @@ void	process(pid_t child, char **command, char **envp, int status, char *ptr)
             kill(child, SIGKILL);
             exit(0);
         }
-        if (g_path_ != NULL)
-            free(g_path_);
         final_path(command, envp);
         if (echo_(command, ptr) == -1 && ft_strlen(ptr) != 1)
         {
@@ -134,6 +132,8 @@ void	process(pid_t child, char **command, char **envp, int status, char *ptr)
                 }
             }
         }
+        if (ft_strlen(g_path_) > 1)
+            free(g_path_);
     }
     if (child > 0)
         wait(&status);
