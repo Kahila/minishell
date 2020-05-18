@@ -6,7 +6,7 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:17:53 by akalombo          #+#    #+#             */
-/*   Updated: 2019/06/24 11:00:02 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/05/18 14:05:45 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <string.h>
 
+int                 get_next_line(const int fd, char **line);
 size_t				ft_strlen(const char *s);
 int					ft_int_len(long n);
 void				*ft_memcpy(void *s, const void *s1, size_t n);

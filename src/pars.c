@@ -6,7 +6,7 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 14:25:26 by akalombo          #+#    #+#             */
-/*   Updated: 2020/05/17 14:33:54 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/05/18 14:30:00 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,15 @@ int	len_check(char *str)
 	return (-1);
 }
 
+static char *read_line()
+{
+     char    *line;
+
+     line = NULL;
+     get_next_line(0, &line);
+     return (line);
+}
+
 size_t	crete_process(pid_t child, char **command, char *lineptr, char *c, char **envp)
 {
 	size_t	status;
@@ -73,7 +82,10 @@ size_t	crete_process(pid_t child, char **command, char *lineptr, char *c, char *
 	while(1)
 	{
 		ft_putstr("$> ");
-		if (getline(&lineptr, &status, stdin) == -1)
+        if (lineptr)
+            free(lineptr);
+        lineptr = read_line();
+		if ( lineptr == NULL)
 			break;
 		if (check_(lineptr) == -1)
 		{

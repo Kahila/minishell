@@ -6,7 +6,7 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 23:56:42 by akalombo          #+#    #+#             */
-/*   Updated: 2020/05/17 10:22:58 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/05/18 06:05:48 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ size_t	count_()
 		i++;
 	return (i);
 }
+
 void	ft_real(char **add, int index)
 {
 	extern char**	environ;
@@ -126,7 +127,7 @@ int	ft_setenv(const char *name, const char *value, int overwrite)
 {
 	char		*tmp = ft_strjoin(name, "=");
 	char		*new;
-	(void)overwrite;
+	(void)      overwrite;
 	extern char	**environ;
 
 	new = ft_strjoin(tmp, value);
