@@ -44,6 +44,7 @@ all: $(NAME)
 clean:
 	make -C inc/libft clean
 	rm -f $(OBJS)
+	rm -rf $(ODIR)
 
 fclean:	clean
 	make -C inc/libft fclean
