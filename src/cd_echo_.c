@@ -6,7 +6,7 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 23:49:46 by akalombo          #+#    #+#             */
-/*   Updated: 2020/05/16 07:53:44 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/05/18 20:45:01 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,13 @@ int  echo_env(char *str)
         tmp = ft_strsplit(environ[i], '=');
         joined = ft_strjoin("$", tmp[0]);
         if (ft_strcmp(joined, split_[1]) == 0)
+        {
             ft_putendl(tmp[1]);
+            free_(tmp);
+            free(joined);
+            free_(split_);
+            return (0);
+        }
         free_(tmp);
         free(joined);
         i++;

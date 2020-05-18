@@ -6,7 +6,7 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/15 03:06:19 by akalombo          #+#    #+#             */
-/*   Updated: 2020/05/18 14:06:49 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/05/18 20:50:28 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 #include "sys/stat.h"
 #include "sys/wait.h"
 #include "signal.h"
-#include "stdio.h"
 
 char                    g_path[100];
 char                    **g_env;

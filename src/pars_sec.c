@@ -20,6 +20,8 @@ int	check_(char *str)
 			return (-1);
 		i++;
 	}
+    if (ft_strlen(str) <= 1)
+        return (-1);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/15 19:10:00 by akalombo          #+#    #+#             */
-/*   Updated: 2020/05/16 07:54:52 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/05/18 21:33:10 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void remove_(int index)
     tmp = environ;
     i = 0;
     j = 0;
-    printf("----%s\n", environ[_count()]);
+    index = i;
     free(environ[_count() - 1]);
     while (tmp[j])
     {
@@ -42,7 +42,7 @@ void remove_(int index)
             j++;
             index = -1;
             continue;
-        }
+       }
         free(environ[i]);
         environ[i] = ft_strdup(tmp[j]);
         i++;
@@ -53,11 +53,9 @@ void remove_(int index)
     return;
 }
 
-
 int ft_unsetenv(const char *name)
 {
     extern char **environ;
-    // char **tmp;
     int i;
 
     i = 0;
@@ -85,5 +83,6 @@ int unset(char *str)
         free_(tmp);
         return (0);
     }
+    free_(tmp);
     return (-1);
 }
