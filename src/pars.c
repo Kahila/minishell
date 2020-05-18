@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
-#include "stdio.h"
 
 int	built_ins(char *str)
 {
