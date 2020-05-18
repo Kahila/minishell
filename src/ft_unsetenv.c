@@ -6,7 +6,7 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/15 19:10:00 by akalombo          #+#    #+#             */
-/*   Updated: 2020/05/18 21:33:10 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/05/18 23:05:54 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void remove_(int index)
     tmp = environ;
     i = 0;
     j = 0;
-    index = i;
     free(environ[_count() - 1]);
     while (tmp[j])
     {
