@@ -69,8 +69,3 @@ $ ./minishell
 $ etc
 
 ## Examples
-
-![Terminal Image](./Screen Shot 2020-05-17 at 10.43.36 PM.png)
-
-![Terminal Image](./Screen Shot 2020-05-17 at 10.45.00 PM.png)
-

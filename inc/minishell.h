@@ -50,5 +50,9 @@ int                     echo_(char **strs, char *ptr);
 int                     ch_dir(char **strs);
 char                    *g_path_;
 void                    ft_free(char ***command, char *lineptr);
+int	                    replace_(char *str);
+int	                    env_(char *str);
+int	                    built_ins(char *str);
+int	                    check_(char *str);
 
 #endif
