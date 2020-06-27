@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
+/*   By: akalombo <akalombo@student.wethinkcode.co.za>+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/15 02:49:45 by akalombo          #+#    #+#             */
-/*   Updated: 2020/05/21 09:55:49 by akalombo         ###   ########.fr       */
+/*   Created: 2020/05/29 20:24:37 by akalombo          #+#    #+#             */
+/*   Updated: 2020/05/29 20:27:41 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
+#include "unistd.h"
+#include "stdio.h"
 
-int main(int argc, char **argv, char *envp[]){
-   ascii(); 
-    init_env();
-    if (argc > 0 && argv[0] != NULL){
-      checkComand(envp);
-    }
-    if (g_set)
-        free(g_set);
+int main ()
+{
+    pid_t child;
+    int i = 1;
+
+    child = fork();
+    if (child == 0)
+        printf("child %i\n", i++);
+    else
+        printf("parents %i\n", i++);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 23:49:46 by akalombo          #+#    #+#             */
-/*   Updated: 2020/05/18 23:16:22 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/05/22 21:31:48 by akalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,10 @@ int echo_(char **strs, char *ptr)
         {
         print_str(ptr);
         ft_putchar('\n');
-        return (0);
+        exit(0);
+        //return (0);
         }
-        return (0);
+        exit (0);
     }
     return (-1);
 }

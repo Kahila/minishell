@@ -6,7 +6,7 @@
 /*   By: akalombo <akalombo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 14:25:26 by akalombo          #+#    #+#             */
-/*   Updated: 2020/05/19 00:09:02 by akalombo         ###   ########.fr       */
+/*   Updated: 2020/06/27 06:11:32 by ado              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ size_t	crete_process(pid_t child, char **command, char *lineptr, char *c, char *
     status = 0;
     while(1)
     {
-        ft_putstr("$> ");
+        ft_putstr("\033[0;32m$>\033[0;37m ");
         if (lineptr)
             free(lineptr);
         ptr = read_line();
@@ -125,8 +125,9 @@ void	process(pid_t child, char **command, char **envp, int status, char *ptr)
             {
                 if (execve(command[0], command, envp)  == -1 && execve(g_path_, command, envp) == -1)
                 {
-                    ft_putstr("minishell: command not found: ");
+                    ft_putstr("\033[0;31mminishell: command not found: ");
                     ft_putstr(ptr);
+                    ft_putstr(".\033[0;37m");
                     ft_putchar('\n');
                     exit(EXIT_FAILURE);
                 }
